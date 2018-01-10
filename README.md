@@ -17,7 +17,7 @@
 
 
 
-    logstash配置文件如下：
+logstash配置文件如下：
     input {
         beats {
             port => 5045
