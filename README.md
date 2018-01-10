@@ -6,7 +6,7 @@
 
 在使用elk收集容器日志时，由于所有日志文件都存在于/var/lib/docker/containers目录下，此时主要问题就是如何把不同的日志数据进行分类。本处使用到filebeat工具中的正则表达式对日志进行分类，然后统一发送到logstash服务，在logstash中，根据不同的type，打上不同的index。
 
-由于filebeat配置文件内容较多，故本处展示使用正则表达式分类的配置，完整配置文件请查看根目录：
+由于filebeat配置文件内容较多，故本处展示使用正则表达式分类的配置，完整配置文件https://github.com/samlyhuang/kubernetes-elk/blob/master/filebeat.yml：
 
     - input_type: log
     
