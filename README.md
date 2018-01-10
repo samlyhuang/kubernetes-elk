@@ -17,35 +17,35 @@
 
 
 
-logstash配置文件如下：
-input {
-    beats {
-        port => 5045
+    logstash配置文件如下：
+    input {
+        beats {
+            port => 5045
+            }
+    }
+    
+    output {
+        if [type] == "nginx-access-log" {
+            elasticsearch {
+                hosts => ["192.168.31.153:9200"]
+                index => "nginx-access-log-%{+YYYY.MM.dd}"
+                flush_size => 20000
+                idle_flush_time => 10
+                template_overwrite => true
+            }
         }
-}
-
-output {
-    if [type] == "nginx-access-log" {
-        elasticsearch {
-            hosts => ["192.168.31.153:9200"]
-            index => "nginx-access-log-%{+YYYY.MM.dd}"
-            flush_size => 20000
-            idle_flush_time => 10
-            template_overwrite => true
+    
+        if [type] == "nginx-html-error-log" {
+            elasticsearch {
+                hosts => ["192.168.31.153:9200"]
+                index => "nginx-html-error-log-%{+YYYY.MM.dd}"
+                flush_size => 20000
+                idle_flush_time => 10
+                template_overwrite => true
+            }
         }
     }
-
-    if [type] == "nginx-html-error-log" {
-        elasticsearch {
-            hosts => ["192.168.31.153:9200"]
-            index => "nginx-html-error-log-%{+YYYY.MM.dd}"
-            flush_size => 20000
-            idle_flush_time => 10
-            template_overwrite => true
-        }
-    }
-}
-
+    
 
 
 
