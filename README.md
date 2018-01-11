@@ -14,6 +14,8 @@
 ### 前提条件：
 ### docker容器中服务产生的日志都导入该目录下/var/lib/docker/containers
 
+### tips：
+本处不涉及到kubernetes、elasticsearch、kibana安装配置，只涉及到如何收集docker容器日志以及分类发往数据库，并在kibana中展示出来
 
 由于filebeat配置文件内容较多，故本处展示使用正则表达式分类的配置，完整配置文件https://github.com/samlyhuang/kubernetes-elk/blob/master/filebeat.yml：
 
@@ -58,17 +60,6 @@ logstash配置文件如下：
     }
     
 
-
-
-
-
-
-
-
-
-
-
-
-
+在kibana页面中，使用“nginx-html-error-log”建立索引，即可看到docker容器中的日志。可能有一定的延迟，我这边大约延迟十多秒。
 
 
