@@ -8,10 +8,12 @@
     elasticsearch 2.3.4
     kibana 4.5.3
 
-### 前提条件：
-### docker中服务产生的日志都通过容器导入该目录下/var/lib/docker/containers
+### 概述
+在kubernetes集群中，容器所运行的node节点是由kubernetes scheduler 分配的，每个容器运行的节点都是不固定的。本处利用docker会将前端日志输出到/var/lib/docker/containers目录中，filebeat监听该目录，在filebeat中使用正则表达式区分不同的日志发往logstash，在logstash针对不同的日志，打上不同的index
 
-在使用elk收集容器日志时，由于所有日志文件都存在于/var/lib/docker/containers目录下，此时主要问题就是如何把不同的日志数据进行分类。本处使用到filebeat工具中的正则表达式对日志进行分类，然后统一发送到logstash服务，在logstash中，根据不同的type，打上不同的index。
+### 前提条件：
+### docker容器中服务产生的日志都导入该目录下/var/lib/docker/containers
+
 
 由于filebeat配置文件内容较多，故本处展示使用正则表达式分类的配置，完整配置文件https://github.com/samlyhuang/kubernetes-elk/blob/master/filebeat.yml：
 
