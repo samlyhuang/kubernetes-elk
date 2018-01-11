@@ -17,6 +17,7 @@
 ### tips：
 本处不涉及到kubernetes、elasticsearch、kibana安装配置，只涉及到如何收集docker容器日志以及分类发往数据库，并在kibana中展示出来
 
+### 配置文件：
 由于filebeat配置文件内容较多，故本处展示使用正则表达式分类的配置，完整配置文件https://github.com/samlyhuang/kubernetes-elk/blob/master/filebeat.yml：
 
     - input_type: log
