@@ -9,7 +9,7 @@
     kibana 4.5.3
 
 ### 概述
-在kubernetes集群中，容器所运行的node节点是由kubernetes scheduler 分配的，每个容器运行的节点都是不固定的。本处利用docker会将前端日志输出到/var/lib/docker/containers目录中，filebeat监听该目录，在filebeat中使用正则表达式区分不同的日志发往logstash，在logstash针对不同的日志，打上不同的index
+在kubernetes集群中，容器所运行的node节点是由kubernetes scheduler 分配的，每个容器运行的节点都是不固定的。本处利用docker会将前端日志输出到/var/lib/docker/containers目录中，filebeat监听该目录，在filebeat中使用正则表达式区分不同的日志发往logstash，在logstash针对不同的日志，打上不同的index，最终发送到数据库中（elasticsearch）
 
 ### 前提条件：
 ### docker容器中服务产生的日志都导入该目录下/var/lib/docker/containers
