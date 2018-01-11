@@ -2,8 +2,11 @@
 ## kubernetes中使用elk收集容器日志
 
 ### 环境：
-docker 17.10.0
-filebeat 5.3.0
+    docker 17.10.0
+    filebeat 5.3.0
+    logstash 5.3.2
+    elasticsearch 2.3.4
+    kibana 4.5.3
 
 ### 前提条件：
 ### docker中服务产生的日志都通过容器导入该目录下/var/lib/docker/containers
